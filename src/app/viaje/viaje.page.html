@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>viaje</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  
+
+
+  <!-- <form (ngSubmit)="creacionViaje()">
+    <ion-item>
+      <ion-label position="floating">Origen</ion-label>
+      <ion-input [(ngModel)]="viaje.origen" name="origin" required></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Destino</ion-label>
+      <ion-input [(ngModel)]="viaje.destino" name="destination" required></ion-input>
+    </ion-item>
+    
+
+    <ion-button expand="full" type="submit">Crear Viaje</ion-button>
+  </form>
+
+  <p *ngIf="viajeListo" style="text-align: center; color: green;">
+    ¡Viaje creado exitosamente!
+  </p> -->
+  <ion-list>
+    <ion-item>
+      <ion-input [(ngModel)]="origen" label="Origen" ></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input [(ngModel)]="destino" label="Destino" ></ion-input>
+    </ion-item>
+    
+    <p style="text-align: center; color: green;">
+      ¡Viaje creado exitosamente!
+    </p>
+  </ion-list>
+  <ion-button expand="block" (click)="creacionViaje()">Crear</ion-button>
+</ion-content>
