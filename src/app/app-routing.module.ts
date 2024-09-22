@@ -53,14 +53,11 @@ const routes: Routes = [
     path: 'password',
     loadChildren: () => import('./password/password.module').then( m => m.PasswordPageModule)
   },
-  // {
-  //   path: 'viaje',
-  //   loadChildren: () => import('./viaje/viaje.module').then( m => m.ViajePageModule)
-  // },
-  // {
-  //   path: 'listaviaje',
-  //   loadChildren: () => import('./listaviaje/listaviaje.module').then( m => m.ListaviajePageModule)
-  // },
+
+  {
+    path: 'testing',
+    loadChildren: () => import('./testing/testing.module').then( m => m.TestingPageModule)
+  },
 ];
 
 @NgModule({
