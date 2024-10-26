@@ -25,9 +25,14 @@
 #container a {
   text-decoration: none;
 }
+
 #button-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%; /* Ocupa el 100% de la altura del contenido */
+}
+
+.bold-text {
+  font-weight: bold;
 }
