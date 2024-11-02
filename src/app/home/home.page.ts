@@ -34,4 +34,6 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
     this.navController.navigateForward('/registro');
   }
 
+
+  
 }
