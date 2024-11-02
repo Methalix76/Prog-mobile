@@ -1,0 +1,83 @@
+<ion-header [translucent]="false">
+  <ion-toolbar>
+    <ion-img src="assets/img/move up!.png"/>
+  </ion-toolbar>
+</ion-header>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="primary">
+      <ion-back-button defaultHref="/" text="Atras"></ion-back-button>
+    </ion-buttons>
+    <br>
+    <ion-title><h1>REGISTRO</h1></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content [fullscreen]="true">
+  <div class="centered-div">
+    <ion-toolbar>
+      <ion-img src="assets/img/moveup.png"/>
+     </ion-toolbar>
+    </div>
+  <ion-list>
+
+  
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label> <!-- el nombre que faltaba-->
+      <br>
+      <ion-input class="start-placeholder" [(ngModel)]="nombre" type="text" placeholder="Ingresar tu nombre"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Usuario</ion-label>
+      <br>
+      <ion-input class="start-placeholder" [(ngModel)]="usuario" type="text" placeholder="Ingresar correo electronico"></ion-input>
+    </ion-item>
+
+    <!-- Modificación: Añadir selección de tipo de usuario -->
+    <ion-item>
+      <ion-label>Tipo de Usuario</ion-label>
+      <ion-radio-group [(ngModel)]="tipoUsuario">
+        <ion-item>
+          <ion-label>Pasajero</ion-label>
+          <ion-radio slot="end" value="pasajero"></ion-radio>
+        </ion-item>
+            <ion-item>
+          <ion-label>Conductor</ion-label>
+          <ion-radio slot="end" value="conductor"></ion-radio>
+        </ion-item>
+      </ion-radio-group>
+    </ion-item>
+  </ion-list>
+
+
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <br>
+      <ion-input class="center-placeholder" [(ngModel)]="pass" type="password" placeholder="Ingresar contraseña"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Confirmar Contraseña</ion-label>
+      <br>
+      <ion-input class="center-placeholder" [(ngModel)]="confirmPass" type="password" placeholder="Confirmar contraseña"></ion-input>
+    </ion-item>
+    
+  
+
+
+  
+  <!-- Modificación 2: Añadir spinner y mensaje de registro -->
+  <ion-spinner *ngIf="loading" name="crescent"></ion-spinner>
+  <ion-button (click)="registrar()" expand="block" color="warning">Registrarse</ion-button>
+  <!--<ion-text color="danger" *ngIf="errorMessage">{{ errorMessage }}</ion-text>-->
+</ion-content>
+
+
+
+
+<ion-footer>
+  <ion-toolbar>
+    <p class="centered-text">powered by V&A</p>
+  </ion-toolbar>
+</ion-footer>

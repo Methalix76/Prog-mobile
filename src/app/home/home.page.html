@@ -1,20 +1,50 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header [translucent]="false">
+<ion-toolbar>
+     <ion-img src="assets/img/bienvenido-move up!.png"/>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <br>
+<br>
+<div class="centered-div">
+<ion-toolbar>
+  <ion-img src="assets/img/moveup.png"/>
+ </ion-toolbar>
+</div>
+<br>
+<br>
+  <h3><p class="centered-text">INGRESAR</p>
+</h3>
+<ion-list>
+  <ion-item>
+    <ion-label position="floating">Usuario</ion-label>
+    <br>
+    <ion-input class="start-placeholder" [(ngModel)]="usuario" type="text" placeholder="Ingresar correo electronico"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Contraseña</ion-label>
+    <br>
+    <ion-input class="center-placeholder" [(ngModel)]="pass" type="password" placeholder="Ingresar contraseña"></ion-input>
+  </ion-item>
+  </ion-list>
+  <ion-button (click)="ingresar()" expand="block"  color="success" class="bold-text">Ingresar</ion-button>
+  <br>
+<br>
+<br>
+<p class="centered-text">"Eres usuario nuevo?"</p>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button (click)="irARegistro()" expand="block" color="warning" class="bold-text">Registrarte</ion-button>
+<br>
+<br>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <p class="centered-text">powered by V&A</p>
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+

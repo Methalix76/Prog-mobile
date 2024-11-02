@@ -35,3 +35,28 @@
 /* @import "@ionic/angular/css/palettes/dark.always.css"; */
 /* @import "@ionic/angular/css/palettes/dark.class.css"; */
 @import "@ionic/angular/css/palettes/dark.system.css";
+
+
+
+/* MTX mis estilos */
+
+.centered-text {
+  text-align: center; /* Centra el texto horizontalmente */
+}
+
+.center-placeholder::placeholder {
+    text-align: center;
+  }
+
+.end-placeholder::placeholder {
+    text-align: end;
+  }
+  .start-placeholder::placeholder {
+    text-align: start;
+  }
+
+  .centered-div {
+    width: 50%; /* Reduce el tamaño a la mitad */
+    margin: 0 auto; /* Centra el div horizontalmente */
+    text-align: center; /* Centra el contenido dentro del div */
+  }
