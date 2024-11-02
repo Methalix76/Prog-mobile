@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from '@ionic/angular'; // HERE MODIFY: Importar LoadingController
 import { LoginService } from '../login.service';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; // <----------------------modifica para firestore--->
+
 
 @Component({
   selector: 'app-registro',
@@ -21,7 +23,8 @@ export class RegistroPage {
     private navController: NavController, 
     private loginSrv: LoginService,
     private alertController: AlertController,
-    private loadingController: LoadingController 
+    private loadingController: LoadingController,
+    private firestore: AngularFirestore // <----------------------modifica para firestore--->
   ) {}
 
   async registrar() {
@@ -40,8 +43,19 @@ export class RegistroPage {
     await this.hideLoading();
 
     if (registroExitoso) {
-      this.showSuccessAlert();
-      this.navController.navigateForward('/home');
+      // Guardar datos en Firestore
+      this.firestore.collection('usuarios').add({
+        nombre: this.nombre,
+        usuario: this.usuario,
+        tipoUsuario: this.tipoUsuario,
+        pass: this.pass // Considera encriptar la contraseña antes de guardarla
+      }).then(() => {
+        this.showSuccessAlert();
+        this.navController.navigateForward('/home');
+      }).catch((error) => {
+        this.errorMessage = 'Error al guardar en Firestore: ' + error.message;
+        this.showAlert(this.errorMessage);
+      });
     } else {
       this.errorMessage = 'Error al registrar, Valide su email'; 
       this.showAlert(this.errorMessage); 
