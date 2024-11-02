@@ -19,6 +19,10 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'passchange',
+    loadChildren: () => import('./passchange/passchange.module').then( m => m.PasschangePageModule)
+  },
 ];
 
 @NgModule({
