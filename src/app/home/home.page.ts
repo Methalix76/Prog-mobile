@@ -4,6 +4,14 @@ import { LoginService } from '../login.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore'; // <----------------------modifica para firestore--->
 
 
+
+interface UserData {
+  nombre: string;
+  usuario: string;
+  tipoUsuario: string;
+  pass: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -21,8 +29,8 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
 
 
 
-  constructor() {
-  }
+  constructor(
+  ) {}
 
   ionViewWillEnter(): void {
   }
@@ -36,9 +44,14 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
     // <----------------------modifica boton ingresar--->
     const userRef = this.firestore.collection('usuarios', ref => ref.where('usuario', '==', this.usuario).where('pass', '==', this.pass));
     const userSnapshot = await userRef.get().toPromise();
-
+  
     if (userSnapshot && userSnapshot.docs.length > 0) {
-      this.navController.navigateForward('/');
+      const userData = userSnapshot.docs[0].data() as UserData;
+      if (userData.tipoUsuario === 'conductor') {
+        this.navController.navigateForward('/conductor'); // <----------------------modificacion para derivar segun tipoUsuario--->
+      } else if (userData.tipoUsuario === 'pasajero') {
+        this.navController.navigateForward('/pasajero'); // <----------------------modificacion para derivar segun tipoUsuario--->
+      }
     } else {
       const alert = await this.alertController.create({
         header: 'Error',
@@ -48,7 +61,6 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
       await alert.present();
     }
   }
-  
 
 
 
