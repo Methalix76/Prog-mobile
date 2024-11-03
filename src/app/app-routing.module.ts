@@ -28,12 +28,25 @@ const routes: Routes = [
     loadChildren: () => import('./pasajero/pasajero.module').then( m => m.PasajeroPageModule)
   },
   {
+    path: '',
+    redirectTo: 'conductor',
+    pathMatch: 'full'
+  },
+  {
     path: 'conductor',
     loadChildren: () => import('./conductor/conductor.module').then( m => m.ConductorPageModule)
   },
   {
     path: 'perfil',
     loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'perfil-c',
+    loadChildren: () => import('./perfil-c/perfil-c.module').then( m => m.PerfilCPageModule)
+  },
+  {
+    path: 'perfil-p',
+    loadChildren: () => import('./perfil-p/perfil-p.module').then( m => m.PerfilPPageModule)
   },
 ];
 
@@ -44,3 +57,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+

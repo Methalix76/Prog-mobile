@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { AlertController, NavController, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
 import { LoginService } from '../login.service';
+import { FirestoreService } from '../servicios/firestore.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore'; // <----------------------modifica para firestore--->
 import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 
@@ -23,8 +24,11 @@ export class HomePage implements ViewDidEnter, ViewWillEnter {
 
   navController = inject(NavController);
   loginSrv = inject(LoginService);
+  firestoreService =inject(FirestoreService);
   firestore = inject(AngularFirestore); // <----------------------modifica para firestore--->
   alertController = inject(AlertController); // <----------------------modifica para firestore--->
+
+
 
   constructor() {}
 
