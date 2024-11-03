@@ -5,17 +5,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <br>
 <br>
 <div class="centered-div">
 <ion-toolbar>
   <ion-img src="assets/img/moveup.png"/>
  </ion-toolbar>
 </div>
-<br>
-<br>
-  <h3><p class="centered-text">INGRESAR</p>
-</h3>
+  <h2><p class="centered-text">- I N G R E S A R -</p></h2>
 <ion-list>
   <ion-item>
     <ion-label position="floating">Usuario</ion-label>
@@ -30,10 +26,16 @@
   </ion-list>
   <ion-button (click)="ingresar()" expand="block"  color="success" class="bold-text">Ingresar</ion-button>
   <br>
-  <ion-button (click)="ingresar()" expand="block"  color="success" class="bold-text">Cambia tu contrase</ion-button>
-<br>
-<br>
-<p class="centered-text">"Eres usuario nuevo?"</p>
+   <!--<p class="centered-text">"Olvidaste tu contraseña?"</p> -->
+   <div class="centered-text">
+    <ion-text color="primary" (click)="goToPassChange()" class="bold-text">Olvidaste tu contraseña?</ion-text>
+    <br>
+    <br>
+    <ion-text class="bold-text" style="color: #ffffff;">o</ion-text>
+    <br>
+   
+    <ion-text class="bold-text" style="color: #ffffff;">Eres usuario nuevo?</ion-text>
+  </div>
 
   <ion-button (click)="irARegistro()" expand="block" color="warning" class="bold-text">Registrarte</ion-button>
 <br>

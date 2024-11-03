@@ -53,7 +53,7 @@ export class RegistroPage {
         this.showSuccessAlert();
         this.navController.navigateForward('/home');
       }).catch((error) => {
-        this.errorMessage = 'Error al guardar en Firestore: ' + error.message;
+        this.errorMessage = 'Error al guardar en base de datos: ' + error.message;
         this.showAlert(this.errorMessage);
       });
     } else {
