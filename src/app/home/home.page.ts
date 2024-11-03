@@ -2,8 +2,7 @@ import { Component, inject } from '@angular/core';
 import { AlertController, NavController, ViewDidEnter, ViewWillEnter } from '@ionic/angular';
 import { LoginService } from '../login.service';
 import { AngularFirestore } from '@angular/fire/compat/firestore'; // <----------------------modifica para firestore--->
-
-
+import { lastValueFrom } from 'rxjs/internal/lastValueFrom';
 
 interface UserData {
   nombre: string;
@@ -17,23 +16,19 @@ interface UserData {
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements ViewDidEnter,ViewWillEnter {
+export class HomePage implements ViewDidEnter, ViewWillEnter {
 
-  usuario:string = '';
-  pass:string = '';
-  
+  usuario: string = '';
+  pass: string = '';
+
   navController = inject(NavController);
   loginSrv = inject(LoginService);
   firestore = inject(AngularFirestore); // <----------------------modifica para firestore--->
   alertController = inject(AlertController); // <----------------------modifica para firestore--->
 
+  constructor() {}
 
-
-  constructor(
-  ) {}
-
-  ionViewWillEnter(): void {
-  }
+  ionViewWillEnter(): void {}
 
   async ionViewDidEnter() {
     this.usuario = '';
@@ -43,8 +38,8 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
   async ingresar() {
     // <----------------------modifica boton ingresar--->
     const userRef = this.firestore.collection('usuarios', ref => ref.where('usuario', '==', this.usuario).where('pass', '==', this.pass));
-    const userSnapshot = await userRef.get().toPromise();
-  
+    const userSnapshot = await lastValueFrom(userRef.get()); // <-------------------------------cambio pass-----
+
     if (userSnapshot && userSnapshot.docs.length > 0) {
       const userData = userSnapshot.docs[0].data() as UserData;
       if (userData.tipoUsuario === 'conductor') {
@@ -62,8 +57,6 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
     }
   }
 
-
-
   irARegistro() {
     this.navController.navigateForward('/registro');
   }
@@ -71,5 +64,4 @@ export class HomePage implements ViewDidEnter,ViewWillEnter {
   goToPassChange() {
     this.navController.navigateForward('/passchange'); // <-------------------------------cambio pass-----
   }
-  
 }
