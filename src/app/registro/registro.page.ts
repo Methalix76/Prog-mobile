@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from '@ionic/angular'; // HERE MODIFY: Importar LoadingController
 import { LoginService } from '../login.service';
-import { AngularFirestore } from '@angular/fire/compat/firestore'; // <----------------------modifica para firestore--->
-
 
 @Component({
   selector: 'app-registro',
@@ -14,8 +12,8 @@ export class RegistroPage {
   usuario: string = '';
   pass: string = '';
   confirmPass: string = '';
-  tipoUsuario: string = ''; // Modificación 3: Añadir variable para tipo de usuario
   errorMessage: string = ''; // Variable para el mensaje de error
+  tipoUsuario: string = ''; // Modificación 3: Añadir variable para tipo de usuario
   loading: boolean = false; // Modificación 4: Añadir variable para spinner
   mensaje: string = ''; // Modificación 5: Añadir variable para mensaje
 
@@ -23,8 +21,7 @@ export class RegistroPage {
     private navController: NavController, 
     private loginSrv: LoginService,
     private alertController: AlertController,
-    private loadingController: LoadingController,
-    private firestore: AngularFirestore // <----------------------modifica para firestore--->
+    private loadingController: LoadingController 
   ) {}
 
   async registrar() {
@@ -43,19 +40,8 @@ export class RegistroPage {
     await this.hideLoading();
 
     if (registroExitoso) {
-      // Guardar datos en Firestore
-      this.firestore.collection('usuarios').add({
-        nombre: this.nombre,
-        usuario: this.usuario,
-        tipoUsuario: this.tipoUsuario,
-        pass: this.pass // Considera encriptar la contraseña antes de guardarla
-      }).then(() => {
-        this.showSuccessAlert();
-        this.navController.navigateForward('/home');
-      }).catch((error) => {
-        this.errorMessage = 'Error al guardar en base de datos: ' + error.message;
-        this.showAlert(this.errorMessage);
-      });
+      this.showSuccessAlert();
+      this.navController.navigateForward('/home');
     } else {
       this.errorMessage = 'Error al registrar, Valide su email'; 
       this.showAlert(this.errorMessage); 
@@ -87,7 +73,7 @@ export class RegistroPage {
   async showSuccessAlert() { //Método para mostrar el popup de éxito
     const alert = await this.alertController.create({
       header: 'Registro',
-      message: 'Exitoso!!!',
+      message: 'Exitoso',
       buttons: ['OK']
     });
 
