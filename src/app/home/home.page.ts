@@ -47,9 +47,9 @@ export class HomePage implements ViewDidEnter, ViewWillEnter {
     if (userSnapshot && userSnapshot.docs.length > 0) {
       const userData = userSnapshot.docs[0].data() as UserData;
       if (userData.tipoUsuario === 'conductor') {
-        this.navController.navigateForward('/conductor'); // <----------------------modificacion para derivar segun tipoUsuario--->
-      } else if (userData.tipoUsuario === 'pasajero') {
-        this.navController.navigateForward('/pasajero'); // <----------------------modificacion para derivar segun tipoUsuario--->
+        this.navController.navigateForward('/conductor',{queryParams: { nombre: this.usuario }}); 
+            } else if (userData.tipoUsuario === 'pasajero') {
+        this.navController.navigateForward('/pasajero',{queryParams: { nombre: this.usuario }}); 
       }
     } else {
       const alert = await this.alertController.create({
