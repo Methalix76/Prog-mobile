@@ -25,6 +25,17 @@ export class ConductorPage implements OnInit {
     });
   }
 
+  crearViaje() {
+    this.navCtrl.navigateForward('/crearviaje');
+  }
+
+  verViajes() {
+    this.navCtrl.navigateForward('/viajes');
+  }
+
+  verSolicitudes() {
+    this.navCtrl.navigateForward('/solicitudes');
+  }
   goToProfile() {
     this.navCtrl.navigateForward('/perfil-c');
   }

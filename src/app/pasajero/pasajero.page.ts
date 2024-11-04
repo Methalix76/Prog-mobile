@@ -8,7 +8,17 @@ import { NavController } from '@ionic/angular'; // <------------------modif rela
 })
 export class PasajeroPage {
   constructor(private navCtrl: NavController) {} // <------------------modif relacionada a vinculo a perfil--->
+  solicitarViaje() {
+    this.navCtrl.navigateForward('/solicitarviaje');
+  }
 
+  viajeDispo() {
+    this.navCtrl.navigateForward('/viajes');
+  }
+
+  verSolicitudes() {
+    this.navCtrl.navigateForward('/solicitudes');
+  }
   goToProfile() { // <------------------modif relacionada a vinculo a perfil--->
     this.navCtrl.navigateForward('/perfil'); // <------------------modif relacionada a vinculo a perfil--->
   }

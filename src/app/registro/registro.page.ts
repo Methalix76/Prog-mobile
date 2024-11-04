@@ -14,8 +14,8 @@ export class RegistroPage {
   usuario: string = '';
   pass: string = '';
   confirmPass: string = '';
-  errorMessage: string = ''; // Variable para el mensaje de error
   tipoUsuario: string = ''; // Modificación 3: Añadir variable para tipo de usuario
+  errorMessage: string = ''; // Variable para el mensaje de error
   loading: boolean = false; // Modificación 4: Añadir variable para spinner
   mensaje: string = ''; // Modificación 5: Añadir variable para mensaje
 

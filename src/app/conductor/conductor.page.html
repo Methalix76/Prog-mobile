@@ -21,17 +21,18 @@
 <ion-content>
   <p>Bienvenido, {{ nombre }}</p>
 </ion-content>
-<!--------------------logica para ver lo que hace el pasajero en la aplicacion--->
+
 <ion-content>
-  <p>insertar logica para ver lo que hace el pasajero en la aplicacion</p>
-  <br>
-  <br>
-  <br>
-  <br><br>
-  <br><br>
-  <br>
+  <ion-button expand="full" color="primary" (click)="crearViaje()">
+    Crear viaje
+  </ion-button>
+<br>
+  <ion-button expand="full" color="tertiary" (click)="verSolicitudes()">
+    Solicitudes
+  </ion-button>
+<br>
 </ion-content>
-<!--------------------logica para ver lo que hace el pasajero en la aplicacion--->
+
 
 <ion-footer>
   <ion-toolbar>
