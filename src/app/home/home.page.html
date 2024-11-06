@@ -1,55 +1,35 @@
+
 <ion-header [translucent]="false">
-<ion-toolbar>
-     <ion-img src="assets/img/bienvenido-move up!.png"/>
-    </ion-toolbar>
+  <ion-toolbar>
+    <ion-img src="assets/img/bienvenido-move up!.png"/>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<br>
-<div class="centered-div">
-<ion-toolbar>
-  <ion-img src="assets/img/moveup.png"/>
- </ion-toolbar>
-</div>
-  <h2><p class="centered-text">- I N G R E S A R -</p></h2>
-<ion-list>
-  <ion-item>
-    <ion-label position="floating">Usuario</ion-label>
-    <br>
-    <ion-input class="start-placeholder" [(ngModel)]="usuario" type="text" placeholder="Ingresar correo electronico"></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label position="floating">Contraseña</ion-label>
-    <br>
-    <ion-input class="center-placeholder" [(ngModel)]="pass" type="password" placeholder="Ingresar contraseña"></ion-input>
-  </ion-item>
-  </ion-list>
-  <ion-button (click)="ingresar()" expand="block"  color="success" class="bold-text">Ingresar</ion-button>
   <br>
-   <!--<p class="centered-text">"Olvidaste tu contraseña?"</p> -->
-   <div class="centered-text">
-    <ion-text color="primary" (click)="goToPassChange()" class="bold-text"> Olvidaste tu contraseña? </ion-text>
+  <div class="centered-div">
+    <ion-toolbar>
+      <ion-img src="assets/img/moveup.png"/>
+    </ion-toolbar>
+  </div>
+  <br>
+  <br>
+  <h2><p class="centered-text">- I N G R E S A R -</p></h2>
+  <br>
+  <br>
+  <ion-button (click)="goToLogin()" expand="block" color="success" class="bold-text">Ir a Login</ion-button> 
+  <br>
+  <div class="centered-text">
+
     <br>
-    <br>
-    <ion-text class="bold-text" style="color: #ffffff;">o</ion-text>
-    <br>
-   
     <ion-text class="bold-text" style="color: #ffffff;">Eres usuario nuevo?</ion-text>
   </div>
-
   <ion-button (click)="irARegistro()" expand="block" color="warning" class="bold-text">Registrarte</ion-button>
-<br>
-<br>
-
-
+  <br>
+  <br>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
     <p class="centered-text">powered by V&A</p>
   </ion-toolbar>
 </ion-footer>
-
-
-
-
-

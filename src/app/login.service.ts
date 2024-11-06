@@ -1,7 +1,7 @@
-
 import { Injectable } from '@angular/core';
 import { FirebaseAuthentication, User } from '@capacitor-firebase/authentication';
 import { BehaviorSubject } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore'; // Importar AngularFirestore
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,9 @@ export class LoginService {
     this.cargarFirebase = resolve;
   });
 
-  constructor() {
+  constructor(
+    private firestore: AngularFirestore // Inyectar AngularFirestore
+  ) {
     // Dejamos un escucha al evento de cambio de estado de firebase
     //cuando firebase inicie la primera vez, este evento se llamará cuando este cargado
     FirebaseAuthentication.addListener('authStateChange', async (cambio)=>{
@@ -51,6 +53,7 @@ export class LoginService {
     this.nombreUsuario = login.user!.email!;
     console.log(login);
   }
+
   public async registrar(user: string, password: string): Promise<boolean> {
     try {
       const registro = await FirebaseAuthentication.createUserWithEmailAndPassword({
@@ -64,6 +67,16 @@ export class LoginService {
     } catch (error) {
       console.error('Error al registrar usuario:', error);
       return false;
+    }
+  }
+
+  // Añadir el método registrarUsuario
+  public async registrarUsuario(uid: string, userData: any): Promise<void> {
+    try {
+      await this.firestore.collection('usuarios').doc(uid).set(userData);
+    } catch (error) {
+      console.error('Error al guardar datos del usuario:', error);
+      throw error;
     }
   }
 }
